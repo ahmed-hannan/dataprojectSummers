@@ -1,0 +1,6 @@
+! First Two lines, to be ignored, please enter as <Course Name>, <Course Code>
+! Eg: Data Structures, CS-2001
+Data Structures,CS-2001
+Linear Algebra,CS-2001
+C-Net,   CS-6001
+C-Net, CS-6001
