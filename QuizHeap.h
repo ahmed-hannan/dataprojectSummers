@@ -1,15 +1,7 @@
 #include "Student.h"
 #include "queue.h"
 #include <queue>
-struct Quiz {
-  int marks;
-  Student student;
-  Quiz *left, *right, *parent;
 
-  Quiz(int val, Student s = Student())
-      : marks(val), student(s), left(nullptr), right(nullptr), parent(nullptr) {
-  }
-};
 
 int convertstringtoint(string s1)
 {
@@ -51,6 +43,221 @@ int convertstringtoint(string s1)
 
 
 }
+
+
+
+struct Quiz2
+{
+    string* names;
+    string* ids;
+    int* marks;
+    int num;
+    Quiz2()
+    {
+        names = ids = nullptr;
+        marks = nullptr;
+        num = 0;
+    }
+    void print()
+    {
+        for (int i = 0; i < num; i++)
+        {
+            cout << "Student: " << names[i];
+            cout << "ID: " << ids[i] << " obtained marks -> " << marks[i]<<endl;
+        }
+        cout << endl;
+        cin.ignore();
+        cin.ignore();
+        
+    }
+    void addStudent(string n, string i, int m)
+    {        
+        string* newName = new string[num+1];
+        string* nids = new string[num+1];
+        int* newMarks = new int[num + 1];
+        for (int i = 0; i < num; i++)
+        {
+            newName[i] = names[i];
+            nids[i] = ids[i];
+            newMarks[i] = marks[i];
+        }
+        newName[num] = n;
+        nids[num] = i;
+        newMarks[num] = m;
+        num++;
+
+        this->ids = nids;
+        this->marks = newMarks;
+        this->names = newName;
+        
+    
+    }
+
+    double average()
+    {
+        double res=0;
+        for (int i = 0; i < num; i++)
+        {
+            res += marks[i];
+        }
+        return res / num;
+    
+    }
+
+    int highest()
+    {
+        int val = 0;
+        string name = "";
+        string id = "";
+        for (int i = 0; i < num; i++)
+        {
+            if (marks[i] > val)
+            {
+                val = marks[i];
+                name = names[i];
+                id = ids[i];
+            }
+        
+        }
+        
+        cout << "Highest marks-> " << val << endl;
+        if (val)
+        {
+            cout << "Student-> " << name;
+            cout << "\nID-> " << id << endl;
+        }
+        return val;
+
+    }
+    
+
+    void readDataFromFile(string filename = "Quiz1.txt") {
+        //string filename = "s";
+        ifstream file(filename);
+        if (!file.is_open()) {
+            cout << "Could not open the file!\n";
+            return;
+        }
+
+        string line;
+        string id;
+        string name;
+        string marks;
+        while (getline(file, line))
+        {
+            Student curr;
+            bool firstchar = 0;
+            bool err = 0;
+            //currline += '\0';
+            id = "";
+            name = "";
+            marks = "";
+            int idx = 0;
+            if (line[0] == '!') //Designated as a comment
+                continue;
+            if (line[0] == '\0') //empty lines
+                continue;
+
+            while (line[idx] != ',')
+            {
+                if (line[idx] != ' ' || line[idx] != '\t')
+                {
+                    firstchar = 1;
+
+                }
+                if (!firstchar)
+                {
+                    idx++;
+                    continue;
+                }
+                id += line[idx];
+                idx++;
+
+                if (line[idx] == '\0')
+                {
+                    cout << "ERROR, standard not followed";
+                    err = 1;
+                    continue;
+                }
+
+            }
+            idx++; //skipping the ,
+            firstchar = 0;
+            while (line[idx] != ',')
+            {
+                if (line[idx] != ' ' && line[idx] != '\t')
+                {
+                    firstchar = 1;
+
+                }
+                if (!firstchar)
+                {
+                    idx++;
+                    continue;
+                }
+                if (line[idx] == '\0')
+                {
+                    cout << "ERROR, standard not followed";
+                    err = 1;
+                    continue;
+                }
+                name += line[idx];
+                idx++;
+            }
+            idx++;
+            while (line[idx] != '\0')
+            {
+                if (line[idx] != ' ' && line[idx] != '\t')
+                {
+                    firstchar = 1;
+
+                }
+                if (!firstchar)
+                {
+                    idx++;
+                    continue;
+                }
+                if (line[idx] < '0' && line[idx]> '9')
+                {
+                    err = 1;
+                }
+                marks += line[idx];
+                idx++;
+            }
+
+            if (err)
+                return;
+
+            //curr.setID(id);
+            //curr.setName(name);
+            int res = convertstringtoint(marks);
+            this->addStudent(name, id, res);
+
+
+
+
+
+        }
+
+    }
+
+
+};
+
+
+
+
+struct Quiz {
+  int marks;
+  Student student;
+  Quiz *left, *right, *parent;
+
+  Quiz(int val, Student s = Student())
+      : marks(val), student(s), left(nullptr), right(nullptr), parent(nullptr) {
+  }
+};
+
+
 
 
 class QuizHeap {

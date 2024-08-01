@@ -19,12 +19,28 @@ QuizHeap* Addheap(QuizHeap* list, QuizHeap* newone, int num)
 	return newList;
 }
 
+Quiz2* Addheap(Quiz2* list, Quiz2* newone, int num)
+{
+	Quiz2* newList = new Quiz2[num + 1];
+	for (int i = 0; i < num; i++)
+	{
+		newList[i] = list[i];
+	}
+	newList[num] = *newone;
+	return newList;
+}
+
+
+
+
 class DoublyCircular {
 	CourseNode* head;
 	CourseNode* tail;
 	int classnumber;
+	
 
 public:
+
 	DoublyCircular() : head(nullptr), tail(nullptr), classnumber(0) {}
 
 	void insertion(string, string);
@@ -497,15 +513,17 @@ void DoublyCircular::singleClassManagement()
 
 		string filename;
 		fstream file;
-		QuizHeap* Qptr;
+		Quiz2* Qptr;
 		switch (choice)
 		{
 		case 1:
 			//curr->qheap->print();
 			for (int i = 0; i < curr->numquizzes; i++)
 			{
-				cout << "Quiz Average = " << curr->qheap[i].average();
-				cout << "Quiz Highest = " << curr->qheap[i].getMax();
+				int val = i;
+				
+				cout << "Quiz Average = " << curr->quizzes[val].average();
+				curr->quizzes[val].highest();
 
 			}
 			cin.ignore();
@@ -523,12 +541,12 @@ void DoublyCircular::singleClassManagement()
 				cin >> filename;
 				file.open(filename);
 			}
-			Qptr = new QuizHeap;
+			Qptr = new Quiz2;
 			Qptr->readDataFromFile(filename);
-			curr->qheap = Addheap(curr->qheap, Qptr, curr->numquizzes);
+			curr->quizzes = Addheap(curr->quizzes, Qptr, curr->numquizzes);
+			//curr->quizzes[curr->numquizzes].print();
 			curr->numquizzes++;
 			
-
 			break;
 
 		case 3:

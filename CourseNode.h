@@ -8,7 +8,7 @@ struct CourseNode {
 	int data, strength;
 	string name, code;
 	StudentTree* students;
-	QuizHeap* qheap;
+	Quiz2* quizzes;
 	int numquizzes;
 
 
@@ -20,7 +20,7 @@ struct CourseNode {
 		this->name = name;
 		this->code = code;
 		students = nullptr;
-		qheap = nullptr;
+		quizzes = nullptr;
 		numquizzes = 0;
 	}
 
@@ -30,8 +30,8 @@ struct CourseNode {
 	}
 
 	void initializeQuizHeap() {
-		qheap = new QuizHeap;
-		qheap->readDataFromFile();
+		//quizzes = new QuizHeap;
+		//qheap->readDataFromFile();
 	} 
 
 	void displayCourseDetails() {
@@ -56,11 +56,16 @@ struct CourseNode {
 			case 2: {
 				cout << "Quiz marks of ";
 				displayCourseDetails();
-				qheap->print();
+				for (int i = 0; i < numquizzes; i++)
+				{
+					cout << "Quiz Number -> " << i + 1 << "\nAverage:" << quizzes[i].average();
+					quizzes[i].highest();
+				}
 				cin.ignore();
 				break;
 			}
 			case 3: {
+				
 				break;
 			}
 			default:

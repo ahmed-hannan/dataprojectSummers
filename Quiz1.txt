@@ -4,7 +4,7 @@
 21I-0602,	Wajeeh Zafar, 8
 21I-0623,	Sara Jabeen, 8
 21I-0706,	Fawad Mahmood, 9
-21I-2572,	Ali Irfan, 10 
+21I-2572,	Ali Irfan, 10
 21I-2985,	Usman Nadeem,11
 22I-0763,	Kaf Abbas, 12
 22I-0833,	Aalyan Raza, 11
@@ -12,7 +12,7 @@
 22I-0905,	Ibrahim Malik, 14
 22I-0907,	Anas Rashid, 15
 22I-0920,	Aashir Hameed, 16
-22I-0943,	Ahmed Hannan, 17 
+22I-0943,	Ahmed Hannan, 17
 22I-0950,	Azfar Bilal, 18
 22I-0951,	Umar Saleem, 19
 22I-0957,	Ayishah, 20
@@ -23,7 +23,7 @@
 22I-1000,	Adan Malik, 21
 22I-1003,	Hamza Ahmad, 20
 22I-1025,	Fahad Jamil, 19
-22I-1042,	Maaz Ali, 18 
+22I-1042,	Maaz Ali, 18
 22I-1044,	Mohib Ullah, 17
 22I-1053,	Huzaifa Nasir, 15
 22I-1113,	Hadiya Tanveer, 12
