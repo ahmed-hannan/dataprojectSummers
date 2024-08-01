@@ -522,7 +522,7 @@ void DoublyCircular::singleClassManagement()
 			{
 				int val = i;
 				
-				cout << "Quiz Average = " << curr->quizzes[val].average();
+				cout << "Quiz Average = " << curr->quizzes[val].average() << endl;
 				curr->quizzes[val].highest();
 
 			}

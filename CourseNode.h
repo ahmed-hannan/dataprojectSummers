@@ -58,9 +58,10 @@ struct CourseNode {
 				displayCourseDetails();
 				for (int i = 0; i < numquizzes; i++)
 				{
-					cout << "Quiz Number -> " << i + 1 << "\nAverage:" << quizzes[i].average();
+					cout << "Quiz Number -> " << i + 1 << "\nAverage:" << quizzes[i].average() <<endl;
 					quizzes[i].highest();
 				}
+				cout << endl;
 				cin.ignore();
 				break;
 			}
